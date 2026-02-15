@@ -210,6 +210,28 @@ export default function GallerySection({ gallery }: GallerySectionProps) {
                     <p>Deslice el control central en cada imagen para visualizar la transformación.</p>
                 </motion.div>
 
+                {/* Mobile Scroll Hint - Animated indicators to signal horizontal movement */}
+                <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.5 }}
+                    className="flex md:hidden items-center justify-center gap-6 mb-8 text-blue/40"
+                >
+                    <motion.div
+                        animate={{ x: [0, -6, 0] }}
+                        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                    >
+                        <ChevronLeft size={24} />
+                    </motion.div>
+                    <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-navy/30">Deslizar Galería</span>
+                    <motion.div
+                        animate={{ x: [0, 6, 0] }}
+                        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                    >
+                        <ChevronRight size={24} />
+                    </motion.div>
+                </motion.div>
+
                 <div className="relative group">
                     {/* Navigation Buttons */}
                     <button
